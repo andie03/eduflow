@@ -21,6 +21,7 @@ CREATE TABLE matiere (
     id_matiere INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     nom_matiere VARCHAR(100) NOT NULL,
     statut statut_matiere DEFAULT 'pas_encore_commence',
+    heure_totale INTEGER NOT NULL,
     id_prof INTEGER,
     id_classe INTEGER,
     CONSTRAINT fk_classe FOREIGN KEY (id_classe) REFERENCES classe(id_classe),
