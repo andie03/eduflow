@@ -5,6 +5,16 @@ CREATE TYPE statut_seance AS ENUM ('annule', 'prevu', 'en_cours');
 
 --creation des tables dans la base de donnees
 
+--table annee scolaire
+CREATE TABLE annee_scolaire (
+    id_annee_scolaire INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    start_year INTEGER NOT NULL,
+    end_year INTEGER NOT NULL,
+    is_active BOOLEAN DEFAULT TRUE,
+    CONSTRAINT valid_years CHECK (end_year = start_year + 1)
+);
+
+
 --table classe
 
 CREATE TABLE classe (
@@ -51,3 +61,5 @@ CREATE TABLE seance(
     statut statut_seance DEFAULT 'prevu',
     CONSTRAINT fk_cours FOREIGN KEY (id_cours) REFERENCES cours(id_cours)
 );
+
+
